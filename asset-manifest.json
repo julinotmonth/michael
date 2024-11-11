@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/michael/static/css/main.5b769a4c.css",
-    "main.js": "/michael/static/js/main.4a32504a.js",
+    "main.js": "/michael/static/js/main.69006a77.js",
     "static/media/pengumuman.png": "/michael/static/media/pengumuman.a0486e0db55430cd91e5.png",
     "static/media/artikel.jpg": "/michael/static/media/artikel.892936b408fb3502b351.jpg",
     "static/media/news.jpg": "/michael/static/media/news.63ff3e368f0581ba9f43.jpg",
@@ -179,10 +179,10 @@
     "index.html": "/michael/index.html",
     "static/media/rotate.svg": "/michael/static/media/rotate.be7cf75f7d3c28007d864601b4b37bb1.svg",
     "main.5b769a4c.css.map": "/michael/static/css/main.5b769a4c.css.map",
-    "main.4a32504a.js.map": "/michael/static/js/main.4a32504a.js.map"
+    "main.69006a77.js.map": "/michael/static/js/main.69006a77.js.map"
   },
   "entrypoints": [
     "static/css/main.5b769a4c.css",
-    "static/js/main.4a32504a.js"
+    "static/js/main.69006a77.js"
   ]
 }
