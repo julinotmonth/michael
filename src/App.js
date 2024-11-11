@@ -52,7 +52,7 @@ function App() {
   return (
     <BrowserRouter>
           <Routes>
-              <Route path='/' element={<LoginPages />} />
+              <Route path='/michael' element={<LoginPages />} />
               <Route path='/dashboard' element={<PagesDashboard />} />
               <Route path='/dashboard/berita' element={<PagesDashBerita />} />
               <Route path='/dashboard/berita/add-berita' element={<AddProDash />} />
