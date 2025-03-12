@@ -71,7 +71,7 @@ function Politik () {
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:5000/productsBytime')
+    fetch('https://apisetda.vercel.app/productsBytime')
       .then(response => response.json())
       .then(result => {
         // Urutkan data berdasarkan waktu
@@ -105,11 +105,11 @@ function Politik () {
     };
 
     return (
-        <div className="wadah_politik">
+        <div className="wadah_politik" style={{marginTop: '20px'}}>
             <div className="margin_kanankiri">
                 <div className="wadah_content_politik">
                     <Row>
-                        <Col xl={8} lg={8} md={12} sm={12}>
+                        <Col xl={12} lg={12} md={12} sm={12}>
                             <div className="wadah_content_editor margin_bottom_editor">
                                 <h4 className="judul_content_editor">Berita Terkini</h4>
                                 <div className="wadah_garis_editor">
@@ -120,9 +120,9 @@ function Politik () {
                                 <Row>
                                 {data
                                 .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Urutkan berdasarkan createdAt
-                                .slice(0, 8) // Ambil hanya 6 konten terbaru
+                                .slice(0, 9) // Ambil hanya 6 konten terbaru
                                 .map((item) => (
-                                    <Col xl={6} lg={6} md={6} sm={12} key={item.id}>
+                                    <Col xl={4} lg={4} md={6} sm={12} key={item.id}>
                                         <div className="wadah_img_deskrip_politik margin_bottom_politik">
                                             <div className="wadah_img_politik">
                                                 <img src={item.url} className="img_politik" />
@@ -137,54 +137,6 @@ function Politik () {
                                     </Col>
                                       ))}
                                 </Row>                                                                   
-                            </div>
-                        </Col>
-                        <Col xl={4} lg={4} md={12} sm={12}>
-                            <div className="wadah_sidebar margin_top_sidebar margin_top_sidebar_terkini">
-                                <div className="wadah_poster">
-                                    <img src={img_terkini_5} className="content_poster" />
-                                </div>
-                                    <div className="wadah_content_editor margin_bottom_editor">
-                                        <h4 className="judul_content_editor">Artikel Terbaru</h4>
-                                        <div className="wadah_garis_editor">
-                                            <div className="wadah_garis_editor_2"></div>
-                                    </div>
-                                </div>
-                                {dataArtikel
-                                .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Urutkan berdasarkan createdAt
-                                .slice(0, 5) // Ambil hanya 6 konten terbaru
-                                .map((item) => (
-                                <div className="wadah_all_img_and_deskrip margin_bottom_all_img_and_deskrip" key={item.id}>
-                                    <Row>
-                                        <Col xl={4} lg={4} md={4} sm={4} xs={4}>
-                                            <div className="wadah_img_populer">
-                                                <img src={item.url_artikel} className="img_popular" />
-                                            </div>
-                                        </Col>
-                                        <Col xl={8} lg={8} md={8} sm={8} xs={8}>
-                                            <div className="wadah_deskrip_popular">
-                                                <a href={`/artikel/${item.id}`} className="link_deskrip_popular">
-                                                    <span>{truncateText(item.name_artikel, 65)}</span>
-                                                </a>
-                                                <div className="wadah_span_popular_2">
-                                                    <span>14 jam lalu</span>
-                                                </div>
-                                            </div>
-                                        </Col>
-                                    </Row>
-                                </div>
-                                ))}
-                                    <div className="wadah_content_editor margin_bottom_editor margin_top_anti_hoax">
-                                            <h4 className="judul_content_editor">Video</h4>
-                                            <div className="wadah_garis_editor">
-                                                <div className="wadah_garis_editor_2"></div>
-                                            </div>
-                                    </div>
-                                    <div className="wadah_img_and_deskrip_anti_hoax">
-                                        <div className="wadah_video_terkini">
-                                            <ReactPlayer url="https://www.youtube.com/watch?v=bDY9U1XbFdA" width="100%"  />
-                                        </div>
-                                    </div>
                             </div>
                         </Col>
                     </Row>

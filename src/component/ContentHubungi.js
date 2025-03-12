@@ -55,7 +55,7 @@ function ContentHubungi () {
                                         </Link>
                                         <div className="wadah_no_ponsel">
                                             <Link className="link_no_ponsel">
-                                                https://biroadpim.jatimprov.go.id/
+                                                https://balaidesa.sumberpitu.go.id/
                                             </Link>
                                         </div>
                                     </div>
@@ -65,7 +65,7 @@ function ContentHubungi () {
                                             <span className="span_judul_alamat_contact">Alamat</span>
                                         </div>
                                         <div className="wadah_judul_alamat_company">
-                                            <span className="span_alamat_company">Jl. Pahlawan No.110, Alun-alun Contong, Kec. Bubutan, Surabaya, Jawa Timur 60174</span>
+                                            <span className="span_alamat_company">Desa Sumber Pitu, Kec. Tutur, Pasuruan, Jawa Timur 67165</span>
                                         </div>
                                     </div>
 
@@ -119,7 +119,7 @@ function ContentHubungi () {
                             </Col>
                             <Col xl={12}>
                                 <div className="wadah_maps">
-                                    <div style={{width: '100%'}}><iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=Jl.%20Pahlawan%20No.110,%20Alun-alun%20Contong,%20Kec.%20Bubutan,%20Surabaya,%20Jawa%20Timur%2060174+(Biro%20Administrasi%20Pimpinan%20Sekretariat%20Daerah%20Provinsi%20Jawa%20Timur)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/">gps devices</a></iframe></div>
+                                    <div style={{width: '100%'}}><iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=400&amp;hl=en&amp;q=-7.836483290445437,%20112.80870008261319+(Balai%20Desa%20Sumberpitu)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/">gps trackers</a></iframe></div>
                                 </div>
                             </Col>
                         </Row>

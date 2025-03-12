@@ -21,9 +21,6 @@ function Beranda () {
             <NavbarHome />
             <NavbarHome2 />
             <Carousels />
-            <PilihEditor />
-            <ContentSlider />
-            <BannerIbukota />
             <Politik />
             <CarouselsBawah />
             <Ekonomi />

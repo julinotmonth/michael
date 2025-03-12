@@ -1,6 +1,7 @@
 import { Col, Row, Table } from "react-bootstrap";
 import profil_kepala_biro from "../img/profil_kepala_biro.png"
 import profil_kepala_biro_2 from "../img/kepala_biro_2.jpg"
+import kepala_desa from "../img/kepala_desa.png"
 
 function ProfilKepala () {
     return (
@@ -12,11 +13,11 @@ function ProfilKepala () {
                             <Col xl={6} lg={6} md={12}>
                                 <div className="wadah_bioadata_dan_tugas margin_bottom_wadah_bioadata_dan_tugas">
                                     <span className="span_garis_biodata"></span>
-                                    <span className="heading_profil_pejabat">PROFIL PEJABAT</span>
+                                    <span className="heading_profil_pejabat">PROFIL KEPALA DESA</span>
                                 </div>
                                 <div className="wadah_heading_kepala_biro">
-                                    <h3 className="heading_kepala_biro_1">Kepala Biro</h3>
-                                    <span className="heading_kepala_biro_2">Administrasi Pimpinan</span>
+                                    <h3 className="heading_kepala_biro_1">Kepala Desa</h3>
+                                    <span className="heading_kepala_biro_2">SumberPitu</span>
                                 </div>
                                 <div className="wadah_sekretariat_daerah">
                                     <span className="span_sekretariat_daearah">Sekretariat Daerah Provinsi Jawa Timur</span>
@@ -37,7 +38,7 @@ function ProfilKepala () {
                                             <tr className="border_column_table">
                                                 <td>Jabatan</td>
                                                 <td>:</td>
-                                                <td className="last_padding_column">Kepala Biro Administrasi Pimpinan</td>
+                                                <td className="last_padding_column">Kepala Desa SumberPitu</td>
                                             </tr>
                                             <tr className="border_column_table">
                                                 <td>Alamat</td>
@@ -60,7 +61,7 @@ function ProfilKepala () {
                             <Col xl={6} lg={6} md={12}>
                                 <div className="wadah_column_img_1 margin_left_wadah_column_img_1">
                                     <div className="wadah_content_img_2">
-                                        <img src={profil_kepala_biro_2} className="img_content_2" />
+                                        <img src={kepala_desa} className="img_content_2" />
                                     </div>
                                 </div>
                             </Col>

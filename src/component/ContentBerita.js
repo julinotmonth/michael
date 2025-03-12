@@ -63,6 +63,7 @@ function ContentBerita () {
   const [data, setData] = useState([]);
   const [dataArtikel, setDataArtikel] = useState([]);
   const [dataPengumuman, setDataPengumuman] = useState([]);
+  const [links, setLinks] = useState([]);
 
   // Fungsi untuk handle like (termasuk toggle)
   const handleLikeClick = () => {
@@ -103,7 +104,21 @@ function ContentBerita () {
   };
 
   useEffect(() => {
-    fetch('http://localhost:5000/productsBytime')
+    getVideos();
+}, []);
+
+const getVideos = async () => {
+    try {
+        const response = await axios.get("https://apisetda.vercel.app/video");
+        const latestVideos = response.data.slice(-2); // Ambil 2 terakhir
+        setLinks(latestVideos);
+    } catch (error) {
+        console.error("Error fetching videos:", error);
+    }
+};
+
+  useEffect(() => {
+    fetch('https://apisetda.vercel.app/productsBytime')
       .then(response => response.json())
       .then(result => {
         // Urutkan data berdasarkan waktu
@@ -116,7 +131,7 @@ function ContentBerita () {
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:5000/artikelByTime')
+    fetch('https://apisetda.vercel.app/artikelByTime')
       .then(response => response.json())
       .then(result => {
         // Urutkan data berdasarkan waktu
@@ -129,7 +144,7 @@ function ContentBerita () {
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:5000/pengumumanByTime')
+    fetch('https://apisetda.vercel.app/pengumumanByTime')
       .then(response => response.json())
       .then(result => {
         // Urutkan data berdasarkan waktu
@@ -152,7 +167,7 @@ function ContentBerita () {
 
     useEffect(() => {
         // Misalnya ini API untuk mengambil data produk
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://apisetda.vercel.app/products/${id}`)
             .then((response) => response.json())
             .then((data) => {
                 // Misalnya Anda hanya mengambil produk pertama dari hasil API
@@ -168,30 +183,6 @@ function ContentBerita () {
     console.log(`Total Votes: Likes = ${totalVotes.likes}, Dislikes = ${totalVotes.dislikes}`);
 
 
-    const deskripsi = "Pj. Gubernur Adhy Lepas Ekspor Produk Unggulan Jatim ke Empat Negara, Totalnya Tembus Rp 1,3 Miliar";
-    const deskripsi_2 = "Pj. Ketua Dekranasda Isye Ajak Pengrajin Anyaman dan Sasando NTT Kolaborasi Bersama Pengrajin Jatim";
-    const deskripsi_3 = "145 Siswa Asal Papua Tempuh Pendidikan SMA/SMK di Jatim Lewat Program ADEM, Pj. Gubernur Adhy Beri Pesan Khusus Hingga Janji Bonus";
-    const deskripsi_4 = "Hadiri Raker Komwil IV APEKSI, Pj. Gubernur Jatim Dorong Kepala Daerah Terapkan Konsep Kota Cerdas yang Hasilkan Perkotaan Hijau";
-    const deskripsi_5 = "Tingkatkan Kualitas Tenun, Pj. Ketua Dekranasda Isye Bersama Pengrajin Jatim Studi Tiru ke NTT";
-    const deskripsi_6 = "Dua Pelajar Terpilih Sebagai Anggota Paskibraka Nasional, Pj. Gubernur Adhy Pesankan Beri Performa Terbaik untuk Harumkan Jawa Timur";
-    const deskripsi_7 = "Jatim Provinsi Pertama Diluncurkannya Aplikasi Population Clock tingkat Provinsi, Pj. Gubernur Adhy Harap Jadi Upaya Penurunan Stunting";
-    
-    const disukai_1 = "Kecelakaan beruntun libatkan sejumlah kendaraan di Jakarta Utara"
-    const disukai_2 = "Kemenkumham akan limpahkan kewenangan Rupbasan ke Kejagung"
-    const disukai_3 = "Ribuan kades Jatim nyatakan satu komando tak berpolitik jelang Pilkada"
-    const disukai_4 = "Partai Perubahan besutan Anies Baswedan buka pendaftaran, benarkah?"
-    const disukai_5 = "Jadwal lengkap Arab Saudi vs Indonesia di Kualifikasi Piala Dunia 2026"
-
-    const terkini_1 ="Politik kemarin, calon tunggal pilkada hingga putusan gabung BRICS"
-    const terkini_2 ="KPU catat 41 daerah dengan calon tunggal pada Pilkada 2024 dengan hasil yang valid"
-    const terkini_3 ="Rudiantara: Penilaian Anugerah Pandu Negeri 2024 dilakukan independen"
-    const terkini_4 ="Menlu sampaikan terima kasih ke Komisi I DPR di akhir masa jabatannya"
-    const terkini_5 ="Hukum kemarin, Pertukaran buron hingga tanggapan KPK terkait Kaesang"
-    const terkini_6 ="Imigrasi deportasi buronan Filipina berinisial AG"
-    const terkini_7 ="Menlu sampaikan terima kasih ke Komisi I DPR di akhir masa jabatannya"
-    const terkini_8 ="Imigrasi deportasi buronan Filipina berinisial AG"
-
-
   // Fungsi untuk memotong teks jika melebihi 10 karakter
     const truncateText = (text, maxLength) => {
         if (text.length > maxLength) {
@@ -199,6 +190,7 @@ function ContentBerita () {
         }
         return text;
     };
+
     return (
         <div className="wadah_content_berita margin_bottom_content_berita">
             <div className="margin_kanankiri">
@@ -242,14 +234,12 @@ function ContentBerita () {
                                             <div className="wadah_deskripsi_berita_1">
                                                 <span className="span_deskripsi_berita_1">{products.parag_5}</span>
                                             </div>
-                                            <div className="wadah_baca_juga">
-                                                <span className="span_baca_juga">Baca juga: </span>
-                                                <Link className="link_baca_juga">{products.parag_6}</Link>
+                                            {links.map((video, index) => (
+                                            <div key={index} className="wadah_baca_juga">
+                                                <span className="span_baca_juga">Lihat juga: </span>
+                                                <Link to={video.link} className="link_baca_juga">{video.link}</Link>
                                             </div>
-                                            <div className="wadah_baca_juga margin_bottom_baca_juga">
-                                                <span className="span_baca_juga">Baca juga: </span>
-                                                <Link className="link_baca_juga">{products.parag_7}</Link>
-                                            </div>
+                                            ))}
                                             <div className="wadah_deskripsi_berita_1">
                                                 <span className="span_deskripsi_berita_1">{products.parag_8}</span>
                                             </div>
@@ -288,19 +278,25 @@ function ContentBerita () {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="wadah_content_editor margin_bottom_editor">
-                                <h4 className="judul_content_editor">Berita Terkini</h4>
-                                <div className="wadah_garis_editor">
-                                    <div className="wadah_garis_editor_2"></div>
-                                </div>
-                            </div>
                             <div className="wadah_content_politik_2">
+                            </div>
+                                </div>
+                            </Col>                                                     
+                            <Col xl={4} lg={4} md={12} sm={12}>
+                                <div className="wadah_right_politik_all">
+                                <div className="wadah_content_editor margin_bottom_editor margin_top_heading_terpopuler">
+                                    <h4 className="judul_content_editor">Berita Terkini</h4>
+                                    <div className="wadah_garis_editor">
+                                        <div className="wadah_garis_editor_2"></div>
+                                    </div>
+                                </div>
+                                <div className="wadah_sidebar margin_top_sidebar">
                                 <Row>
                                 {data
                                 .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Urutkan berdasarkan createdAt
                                 .slice(0, 6) // Ambil hanya 6 konten terbaru
                                 .map((item) => (
-                                    <Col xl={6} lg={6} md={6} sm={12}>
+                                    <Col xl={12} lg={12} md={12} sm={12}>
                                         <div className="wadah_img_deskrip_politik margin_right_img_deskrip_politik margin_bottom_wadah_berita">
                                             <div className="wadah_img_politik">
                                                 <img src={item.url} className="img_politik" />
@@ -315,91 +311,6 @@ function ContentBerita () {
                                     </Col>
                                 ))}
                                 </Row>
-                            </div>
-                                </div>
-                            </Col>                                                     
-                            <Col xl={4} lg={4} md={12} sm={12}>
-                                <div className="wadah_right_politik_all">
-                                <div className="wadah_content_editor margin_bottom_editor margin_top_heading_terpopuler">
-                                    <h4 className="judul_content_editor">Pengumuman Terkini</h4>
-                                    <div className="wadah_garis_editor">
-                                        <div className="wadah_garis_editor_2"></div>
-                                    </div>
-                                </div>
-                                <div className="wadah_sidebar margin_top_sidebar">
-                                    <Row>
-                                    {dataPengumuman
-                                    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Urutkan berdasarkan createdAt
-                                    .slice(0, 7) // Ambil hanya 6 konten terbaru
-                                    .map((item) => (
-                                        <Col xl={12} lg={12} md={6}>
-                                                <div className="wadah_content_crousels margin_bottom_wadah_content_crousels margin_right_wadah_content_crousels_1">
-                                                    <a href={`/pengumuman/${item.id}`}>
-                                                        <img src={item.url_pengumuman} className="img_content_crousels" />
-                                                    </a>
-                                                    <a href={`/pengumuman/${item.id}`} className="link_deskripsi_content">
-                                                        <span>{truncateText(item.name_pengumuman, 60)}</span>
-                                                    </a>
-                                                    <div className="wadah_kategori">
-                                                        <span>Artikel</span>
-                                                    </div>
-                                                    <div className="wadah_span_waktu">
-                                                         <span>{formatDistanceToNow(new Date(item.updatedAt), { addSuffix: true, locale: localeId })}</span>
-                                                    </div>
-                                                </div>
-                                        </Col>
-                                    ))}
-                                    </Row>
-                                </div>
-                            <div className="wadah_content_editor margin_bottom_editor">
-                                    <h4 className="judul_content_editor">Artikel Terbaru</h4>
-                                    <div className="wadah_garis_editor">
-                                        <div className="wadah_garis_editor_2"></div>
-                                    </div>
-                                    <div className="wadah_sidebar margin_top_wadah_paling_banyak">
-                                    <Row>
-                                    {dataArtikel
-                                    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Urutkan berdasarkan createdAt
-                                    .slice(0, 3) // Ambil hanya 6 konten terbaru
-                                    .map((item) => (
-                                        <Col xl={12} lg={12} md={6}>
-                                                <div className="wadah_content_crousels margin_bottom_wadah_content_crousels margin_right_wadah_paling_banyak_1">
-                                                    <a href={`/artikel/${item.id}`}>
-                                                        <img src={item.url_artikel} className="img_content_crousels" />
-                                                    </a>
-                                                    <a href={`/artikel/${item.id}`} className="link_deskripsi_content">
-                                                        <span>{truncateText(item.name_artikel, 50)}</span>
-                                                    </a>
-                                                    <div className="wadah_kategori">
-                                                        <span>Artikel</span>
-                                                    </div>
-                                                    <div className="wadah_span_waktu">
-                                                        <span>{formatDistanceToNow(new Date(item.updatedAt), { addSuffix: true, locale: localeId })}</span>
-                                                    </div>
-                                                </div>
-                                        </Col>
-                                    ))}
-                                    </Row>
-                                </div>
-                                </div>
-                                <div className="margin_top_politik_left">
-                                    <div className="wadah_content_editor margin_bottom_editor">
-                                        <h4 className="judul_content_editor">Foto</h4>
-                                        <div className="wadah_garis_editor">
-                                            <div className="wadah_garis_editor_2"></div>
-                                        </div>
-                                    </div>
-                                    <Carousel>
-                                        <Carousel.Item>
-                                            <img src={img_crousel_politik_1} className="img_crousel_content_left" />
-                                        </Carousel.Item>
-                                        <Carousel.Item>
-                                            <img src={img_crousel_politik_2} className="img_crousel_content_left" />
-                                        </Carousel.Item>
-                                        <Carousel.Item>
-                                            <img src={img_crousel_politik_3} className="img_crousel_content_left" />
-                                        </Carousel.Item>
-                                    </Carousel>
                                 </div>
                                 </div>
                             </Col>

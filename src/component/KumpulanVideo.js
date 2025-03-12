@@ -1,8 +1,18 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import ReactPlayer from "react-player";
 import { YouTubeEmbed } from 'react-social-media-embed';
 
 function KumpulanVideo () {
+    const [link, setLink] = useState([]);
+        useEffect(() => {
+            getVideo();
+        }, []);
+    const getVideo = async () => {
+        const response = await axios.get("http://localhost:5000/video");
+        setLink(response.data)
+    };
     return (
         <div className="wadah_kumpulan_video margin_bottom_kumpulan_video">
             <div className="margin_kanankiri">
@@ -15,36 +25,13 @@ function KumpulanVideo () {
                             </div>
                         </div>
                         <Row>
-                            <Col xl={4} lg={4} md={6}>
+                            {link.map((links) => (
+                            <Col xl={4} lg={4} md={6} key={links.id}>
                                 <div className="wadah_video_yt_column margin_bottom_video_column">
-                                    <YouTubeEmbed url="https://www.youtube.com/watch?v=gVfqf-igPgY" width="100%"  />
+                                    <YouTubeEmbed url={links.link} width="100%"  />
                                 </div>
                             </Col>
-                            <Col xl={4} lg={4} md={6}>
-                                <div className="wadah_video_yt_column margin_bottom_video_column_2">
-                                    <YouTubeEmbed url="https://www.youtube.com/watch?v=bDY9U1XbFdA" width="100%"  />
-                                </div>
-                            </Col>
-                            <Col xl={4} lg={4} md={6}>
-                                <div className="wadah_video_yt_column margin_bottom_video_column_3">
-                                    <YouTubeEmbed url="https://www.youtube.com/watch?v=jUQiAp5IaVA" width="100%"  />
-                                </div>
-                            </Col>
-                            <Col xl={4} lg={4} md={6}>
-                                <div className="wadah_video_yt_column margin_bottom_video_column_4">
-                                    <YouTubeEmbed url="https://www.youtube.com/watch?v=XcWoWoyBrn4" width="100%"  />
-                                </div>
-                            </Col>
-                            <Col xl={4} lg={4} md={6}>
-                                <div className="wadah_video_yt_column margin_bottom_video_column_5">
-                                    <YouTubeEmbed url="https://www.youtube.com/watch?v=fQ9n3TANOLc" width="100%"  />
-                                </div>
-                            </Col>
-                            <Col xl={4} lg={4} md={6}>
-                                <div className="wadah_video_yt_column margin_bottom_video_column_6">
-                                    <YouTubeEmbed url="https://www.youtube.com/watch?v=x-oIdVjeJIU" width="100%"  />
-                                </div>
-                            </Col>
+                             ))}
                         </Row>
                     </div>
                 </div>

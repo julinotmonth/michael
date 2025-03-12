@@ -52,14 +52,14 @@ function App() {
   return (
     <BrowserRouter>
           <Routes>
-              <Route path='/michael' element={<PagesDashboard />} />
+              <Route path='/' element={<Beranda />} />
               <Route path='/dashboard' element={<PagesDashboard />} />
               <Route path='/dashboard/berita' element={<PagesDashBerita />} />
               <Route path='/dashboard/berita/add-berita' element={<AddProDash />} />
               <Route path='/dashboard/berita/edit-berita/:id' element={<EditProDash />} />
-              <Route path='/dashboard/artikel' element={<PaDashAr />} />
-              <Route path='/dashboard/artikel/add-artikel' element={<AddArtDash />} />
-              <Route path='/dashboard/artikel/edit-artikel/:id' element={<EditArtDash />} />
+              <Route path='/dashboard/video' element={<PaDashAr />} />
+              <Route path='/dashboard/video/add-video' element={<AddArtDash />} />
+              <Route path='/dashboard/video/edit-video/:id' element={<EditArtDash />} />
               <Route path='/dashboard/pengumuman' element={<PapesDash />} />
               <Route path='/dashboard/pengumuman/add-pengumuman' element={<AddpengDash />} />
               <Route path='/dashboard/pengumuman/edit-pengumuman/:id' element={<EditPengDash />} />
@@ -68,7 +68,7 @@ function App() {
               <Route path='/visi-misi' element={<VisiMisi />} />
               <Route path='/tugas&fungsi' element={<TugasFungsi />} />
               <Route path='/struktur-organisasi' element={<StrukturOrganisasi />} />
-              <Route path='/profil-kepala-biro' element={<ProfilKb />} />
+              <Route path='/profil-kepala-desa' element={<ProfilKb />} />
               <Route path='/whistle-blowing' element={<Whistle />} />
               <Route path='/artikel' element={<Artikel />} />
               <Route path='/artikel/:id' element={<SubArtikel />} />

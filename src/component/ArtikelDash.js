@@ -12,6 +12,7 @@ import axios from "axios"
 import { formatDistanceToNow } from "date-fns";  // Import fungsi dari date-fns
 import { id } from 'date-fns/locale';
 import { useEffect, useState } from "react"
+import { YouTubeEmbed } from "react-social-media-embed"
 
 function ArtikelDash () {
 
@@ -23,21 +24,21 @@ function ArtikelDash () {
         return text;
     };
 
-    const [artikels, setArtikels] = useState([]);
+    const [link, setLink] = useState([]);
 
     useEffect(() => {
-        getArtikels();
+        getVideo();
     }, []);
 
-    const getArtikels = async () => {
-        const response = await axios.get("http://localhost:5000/artikel");
-        setArtikels(response.data)
+    const getVideo = async () => {
+        const response = await axios.get("https://apisetda.vercel.app/video");
+        setLink(response.data)
     };
 
-    const deleteArtikel = async (artikelid) => {
+    const deleteVideo = async (videoid) => {
         try {
-            await axios.delete(`http://localhost:5000/artikel/${artikelid}`);
-            getArtikels();
+            await axios.delete(`https://apisetda.vercel.app/video/${videoid}`);
+            getVideo();
         } 
         
         catch (error) {
@@ -52,10 +53,10 @@ function ArtikelDash () {
                         <div className="wadah_content_editor margin_bottom_editor wadah_content_dashboarddd">
                             <Row>
                                 <Col xl={11} lg={11} md={11} sm={9} xs={9}>
-                                    <h4 className="judul_content_editor">Artikel</h4>
+                                    <h4 className="judul_content_editor">Video</h4>
                                 </Col>
                                 <Col xl={1} lg={1} md={1} sm={3} xs={3}>
-                                    <Link to={`add-artikel`}>
+                                    <Link to={`add-video`}>
                                         <Button className="width_button_send" variant="outline-success">Add</Button>
                                     </Link>
                                 </Col>
@@ -65,30 +66,22 @@ function ArtikelDash () {
                             </div>
                         </div>
                                 <Row>
-                                    {artikels.map((artikel) => (
-                                    <Col xl={3} lg={3} md={6} sm={12} key={artikel.id}>
+                                    {link.map((links) => (
+                                    <Col xl={3} lg={3} md={6} sm={12} key={links.id}>
                                         <div className="wadah_img_deskrip_politik margin_bottom_deskrip_politik_1 margin_bottom_row_berita_data">
-                                            <div className="wadah_img_politik">
-                                                <img src={artikel.url_artikel} className="img_politik" />
-                                            </div>
-                                            <div className="wadah_deskrip_politik">
-                                                <Link to={`/artikel/${artikel.id}`} className="link_deskrip_politik">{truncateText(artikel.name_artikel, 55)}</Link>
-                                            </div>
-                                            <div className="wadah_span_waktu">
-                                                <span>{formatDistanceToNow(new Date(artikel.createdAt), { addSuffix: true, locale: id })}</span>
-                                            </div>
+                                            <YouTubeEmbed url={links.link} width="100%"  />
                                             <div className="wadah_content_dashboard_edit_delete">
                                                 <Row>
-                                                    <Col xl={6} lg={6} md={6} sm={6} xs={6}>
-                                                        <div className="margin_right_wadah_button">
-                                                            <Link to={`edit-artikel/${artikel.id}`}> 
-                                                                <Button className="width_button_edit" variant="outline-primary">Edit</Button>
-                                                            </Link>
-                                                        </div>
-                                                    </Col>
+                                                        <Col xl={6} lg={6} md={6} sm={6} xs={6}>
+                                                            <div className="margin_right_wadah_button">
+                                                                <Link to={`edit-video/${links.id}`}> 
+                                                                    <Button className="width_button_edit" variant="outline-primary">Edit</Button>
+                                                                </Link>
+                                                            </div>
+                                                        </Col>
                                                     <Col xl={6} lg={6} md={6} sm={6} xs={6}>
                                                         <div className="margin_left_wadah_button">
-                                                            <Link onClick={() => deleteArtikel(artikel.id)}>
+                                                            <Link onClick={() => deleteVideo(links.id)}>
                                                                 <Button className="width_button_edit" variant="outline-danger">Delete</Button>
                                                             </Link>
                                                         </div>

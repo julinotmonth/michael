@@ -2,6 +2,9 @@ import axios from "axios";
 import { formatDate } from "date-fns";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import NavbarDash from "./NavbarDash";
+import { Col, Row } from "react-bootstrap";
+import Footer from "./Footer";
 
 const AddProDash = () => {
     const [title, setTitle] = useState("");
@@ -53,7 +56,7 @@ const AddProDash = () => {
         formData.append("penulis", penulis);
         formData.append("editor", editor);
         try {
-            await axios.post("http://localhost:5000/products", formData, {
+            await axios.post("https://apisetda.vercel.app/products", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
@@ -67,185 +70,250 @@ const AddProDash = () => {
     };
 
     return (
-        <div className="columns is-centered mt-5">
-      <div className="column is-half">
+        <>
+        <NavbarDash />
+        <div className="margin_kanankiri">
+        <Row>
+          <Col xl={11} lg={11} md={11} sm={9} xs={9}>
+              <h4 className="judul_content_editor" style={{marginTop: '20px'}}>Tambah Berita</h4>
+          </Col>
+      </Row>
+      <div className="wadah_garis_editor">
+          <div className="wadah_garis_editor_2"></div>
+      </div>
+        <div className="columns is-centered">
+      <div className="column is-half" style={{marginTop: '25px'}}>
         <form onSubmit={saveProduct}>
           <div className="field">
-            <label className="label">Product Name</label>
-            <div className="control">
-              <input
-                type="text"
-                className="input"
-                value={deskrip_img}
-                onChange={(e) => setDeskrip_img(e.target.value)}
-                placeholder="deskrip_img"
-              />
-            </div>
-            
+            <label className="styling_name_produk_add">DESKRIPSI GAMBAR</label>
+            <Row>
+              <Col xl={6} lg={6}>
+                <div className="control">
+                  <input
+                    type="text"
+                    className="input_name_produk_add"
+                    value={deskrip_img}
+                    onChange={(e) => setDeskrip_img(e.target.value)}
+                    placeholder="masukkan deskripsi gambar"
+                    style={{marginBottom: '15px'}}
+                  />
+                </div>
+            </Col>
+            </Row>
+            <label className="styling_name_produk_add">JUDUL BERITA</label>
+            <Row>
+              <Col xl={6} lg={6}>
             <div className="control">
                 <input
                     type="text"
-                    className="input"
+                    className="input_name_produk_add"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    placeholder="judul"
+                    placeholder="masukkan judul berita"
+                    style={{marginBottom: '15px'}}
                 />
             </div>
-
+              </Col>
+            </Row>
+            <label className="styling_name_produk_add">HIGHLIGHT BERITA</label>
+            <Row>
+              <Col xl={6} lg={6}>
             <div className="control">
             <input
                 type="text"
-                className="input"
+                className="input_name_produk_add"
                 value={parag_highlight}
                 onChange={(e) => setParag_highlight(e.target.value)}
-                placeholder="parag_highlight"
+                placeholder="masukkan highlight berita"
+                style={{marginBottom: '15px'}}
               />    
             </div>
-
+              </Col>
+            </Row>
+            <label className="styling_name_produk_add">PARAGRAPH PERTAMA</label>
+            <Row>
+              <Col xl={6} lg={6}>
             <div className="control">
             <input
                 type="text"
-                className="input"
+                className="input_name_produk_add"
                 value={parag_1}
                 onChange={(e) => setParag_1(e.target.value)}
-                placeholder="parag_1"
+                placeholder="masukkan paragraf pertama"
+                style={{marginBottom: '15px'}}
               />    
             </div>
-
+            </Col>
+            </Row>
+            <label className="styling_name_produk_add">PARAGRAPH KEDUA</label>
+            <Row>
+              <Col xl={6} lg={6}>
             <div className="control">
             <input
                 type="text"
-                className="input"
+                className="input_name_produk_add"
                 value={parag_2}
                 onChange={(e) => setParag_2(e.target.value)}
-                placeholder="parag_2"
+                placeholder="masukkan paragraf kedua"
+                style={{marginBottom: '15px'}}
               />    
             </div>
-
+            </Col>
+            </Row>
+            <label className="styling_name_produk_add">PARAGRAPH KETIGA</label>
+            <Row>
+              <Col xl={6} lg={6}>
             <div className="control">
             <input
                 type="text"
-                className="input"
+                className="input_name_produk_add"
                 value={parag_3}
                 onChange={(e) => setParag_3(e.target.value)}
-                placeholder="parag_3"
+                placeholder="masukkan paragraf ketiga"
+                style={{marginBottom: '15px'}}
               />    
             </div>
-
+            </Col>
+            </Row>
+            <label className="styling_name_produk_add">PARAGRAPH KEEMPAT</label>
+            <Row>
+              <Col xl={6} lg={6}>
             <div className="control">
             <input
                 type="text"
-                className="input"
+                className="input_name_produk_add"
                 value={parag_4}
                 onChange={(e) => setParag_4(e.target.value)}
-                placeholder="parag_4"
+                placeholder="masukkan paragraf keempat"
+                style={{marginBottom: '15px'}}
               />    
             </div>
-
+            </Col>
+            </Row>
+            <label className="styling_name_produk_add">PARAGRAPH KELIMA</label>
+            <Row>
+              <Col xl={6} lg={6}>
             <div className="control">
             <input
                 type="text"
-                className="input"
+                className="input_name_produk_add"
                 value={parag_5}
                 onChange={(e) => setParag_5(e.target.value)}
-                placeholder="parag_5"
+                placeholder="masukkan paragraf kelima"
+                style={{marginBottom: '15px'}}
               />    
             </div>
-
+            </Col>
+            </Row>
+            <label className="styling_name_produk_add">PARAGRAPH KEENAM</label>
+            <Row>
+              <Col xl={6} lg={6}>
             <div className="control">
             <input
                 type="text"
-                className="input"
-                value={parag_6}
-                onChange={(e) => setParag_6(e.target.value)}
-                placeholder="parag_6"
-              />    
-            </div>
-
-            <div className="control">
-            <input
-                type="text"
-                className="input"
-                value={parag_7}
-                onChange={(e) => setParag_7(e.target.value)}
-                placeholder="parag_7"
-              />    
-            </div>
-
-            <div className="control">
-            <input
-                type="text"
-                className="input"
+                className="input_name_produk_add"
                 value={parag_8}
                 onChange={(e) => setParag_8(e.target.value)}
-                placeholder="parag_8"
+                placeholder="masukkan paragraf keenam"
+                style={{marginBottom: '15px'}}
               />    
             </div>
-
+            </Col>
+            </Row>
+            <label className="styling_name_produk_add">PARAGRAPH KETUJUH</label>
+            <Row>
+              <Col xl={6} lg={6}>
             <div className="control">
             <input
                 type="text"
-                className="input"
+                className="input_name_produk_add"
                 value={parag_9}
                 onChange={(e) => setParag_9(e.target.value)}
-                placeholder="parag_9"
+                placeholder="masukkan paragraf ketujuh"
+                style={{marginBottom: '15px'}}
               />    
             </div>
-
+            </Col>
+            </Row>
+            <label className="styling_name_produk_add">PARAGRAPH KEDELAPAN</label>
+            <Row>
+              <Col xl={6} lg={6}>
             <div className="control">
             <input
                 type="text"
-                className="input"
+                className="input_name_produk_add"
                 value={parag_10}
                 onChange={(e) => setParag_10(e.target.value)}
-                placeholder="parag_10"
+                placeholder="masukkan paragraf kedelapan"
+                style={{marginBottom: '15px'}}
               />    
             </div>
-
+            </Col>
+            </Row>
+            <label className="styling_name_produk_add">PARAGRAPH KESEMBILAN</label>
+            <Row>
+              <Col xl={6} lg={6}>
             <div className="control">
             <input
                 type="text"
-                className="input"
+                className="input_name_produk_add"
                 value={parag_11}
                 onChange={(e) => setParag_11(e.target.value)}
-                placeholder="parag_11"
+                placeholder="masukkan paragraf kesembilan"
+                style={{marginBottom: '15px'}}
               />    
             </div>
-
+            </Col>
+            </Row>
+            <label className="styling_name_produk_add">PARAGRAPH KESEPULUH</label>
+            <Row>
+              <Col xl={6} lg={6}>
             <div className="control">
             <input
                 type="text"
-                className="input"
+                className="input_name_produk_add"
                 value={parag_12}
                 onChange={(e) => setParag_12(e.target.value)}
-                placeholder="parag_12"
+                placeholder="masukkan paragraf kesepuluh"
+                style={{marginBottom: '15px'}}
               />    
             </div>
-
+            </Col>
+            </Row>
+            <label className="styling_name_produk_add">PENULIS BERITA</label>
+            <Row>
+              <Col xl={6} lg={6}>
             <div className="control">
             <input
                 type="text"
-                className="input"
+                className="input_name_produk_add"
                 value={penulis}
                 onChange={(e) => setPenulis(e.target.value)}
-                placeholder="penulis"
+                placeholder="masukkan penulis berita"
+                style={{marginBottom: '15px'}}
               />    
             </div>
-
+            </Col>
+            </Row>
+            <label className="styling_name_produk_add">EDITOR BERITA</label>
+            <Row>
+              <Col xl={6} lg={6}>
             <div className="control">
             <input
                 type="text"
-                className="input"
+                className="input_name_produk_add"
                 value={editor}
                 onChange={(e) => setEditor(e.target.value)}
-                placeholder="editor"
+                placeholder="masukkan editor berita"
+                style={{marginBottom: '15px'}}
               />    
             </div>
-
+            </Col>
+            </Row>
           </div>
  
           <div className="field">
-            <label className="label">Image</label>
+            <label className="styling_name_produk_add">IMAGE BERITA</label>
             <div className="control">
               <div className="file">
                 <label className="file-label">
@@ -270,16 +338,19 @@ const AddProDash = () => {
             ""
           )}
  
-          <div className="field">
+          <div className="field" style={{marginBottom: '15px', marginTop: '15px'}}>
             <div className="control">
-              <button type="submit" className="button is-success">
-                Save
+              <button type="submit" className="button_send_simpan">
+                SIMPAN
               </button>
             </div>
           </div>
         </form>
       </div>
     </div>
+    </div>
+    <Footer />
+    </>
   );
 }
 

@@ -17,24 +17,24 @@ function LoginPages () {
             await axios.post('http://localhost:5000/login', {
                 email: email,
                 password: password
-            });
+            }, { withCredentials: true }); // ✅ Tambahkan ini
+
             navigate("/dashboard");
         } catch (error) {
             if (error.response) {
                 setMsg(error.response.data.msg);
             }
         }
-    }
+    };
     return (
     <form onSubmit={Auth}>
-        <LoginPage  style={{ height: 580 }}>
+        <LoginPage  style={{ height: '100vh' }}>
             <Logo>
                 <LoginLogo />
             </Logo>
             <Username value={email} onChange={(e) => setEmail(e.target.value)} />
             <Password value={password} visible={true} onChange={(e) => setPassword(e.target.value)} />
             <Footer>
-                Not a member? <a href="#">Sign up now</a>
                 <p style={{color: 'red'}}>{msg}</p>
             </Footer>
         </LoginPage>

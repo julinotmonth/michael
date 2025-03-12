@@ -30,14 +30,14 @@ function BeritaDashboard () {
     }, []);
 
     const getProducts = async () => {
-        const response = await axios.get("http://localhost:5000/products");
+        const response = await axios.get("https://apisetda.vercel.app/products");
         setProducts(response.data)
     };
 
 
     const deleteProduct = async (productId) => {
         try {
-            await axios.delete(`http://localhost:5000/products/${productId}`);
+            await axios.delete(`https://apisetda.vercel.app/${productId}`);
             getProducts();
         } 
         

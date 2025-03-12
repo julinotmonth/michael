@@ -1,91 +1,35 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { Col, Row } from "react-bootstrap";
+import NavbarDash from "./NavbarDash";
+import Footer from "./Footer";
 
 const EditArtDash = () => {
-    const [title, setTitle] = useState("");
-    const [deskrip_img_artikel, setDeskrip_img_artikel] = useState("");
-    const [parag_highlight_artikel, setParag_highlight_artikel] = useState("");
-    const [parag_1_artikel, setParag_1_artikel] = useState("");
-    const [parag_2_artikel, setParag_2_artikel] = useState("");
-    const [parag_3_artikel, setParag_3_artikel] = useState("");
-    const [parag_4_artikel, setParag_4_artikel] = useState("");
-    const [parag_5_artikel, setParag_5_artikel] = useState("");
-    const [parag_6_artikel, setParag_6_artikel] = useState("");
-    const [parag_7_artikel, setParag_7_artikel] = useState("");
-    const [parag_8_artikel, setParag_8_artikel] = useState("");
-    const [parag_9_artikel, setParag_9_artikel] = useState("");
-    const [parag_10_artikel, setParag_10_artikel] = useState("");
-    const [parag_11_artikel, setParag_11_artikel] = useState("");
-    const [parag_12_artikel, setParag_12_artikel] = useState("");
-    const [penulis_artikel, setPenulis_artikel] = useState("");
-    const [editor_artikel, setEditor_artikel] = useState("");
-    const [file, setFile] = useState("");
-    const [preview, setPreview] = useState("");
+    const [link, setLink] = useState("");
     const navigate = useNavigate();
     const { id } = useParams();
 
     useEffect(() => {
-        getArtikelById();
+        getVideoById();
     }, []);
 
-    const getArtikelById = async () => {
-        const response = await axios.get(`http://localhost:5000/artikel/${id}`);
-        setTitle(response.data.name_artikel);
-        setFile(response.data.image_artikel);
-        setPreview(response.data.url_artikel);
-        setEditor_artikel(response.data.editor_artikel);
-        setPenulis_artikel(response.data.penulis_artikel);
-        setDeskrip_img_artikel(response.data.deskrip_img_artikel);
-        setParag_highlight_artikel(response.data.parag_highlight_artikel);
-        setParag_1_artikel(response.data.parag_1_artikel);
-        setParag_2_artikel(response.data.parag_2_artikel);
-        setParag_3_artikel(response.data.parag_3_artikel);
-        setParag_4_artikel(response.data.parag_4_artikel);
-        setParag_5_artikel(response.data.parag_5_artikel);
-        setParag_6_artikel(response.data.parag_6_artikel);
-        setParag_7_artikel(response.data.parag_7_artikel);
-        setParag_8_artikel(response.data.parag_8_artikel);
-        setParag_9_artikel(response.data.parag_9_artikel);
-        setParag_10_artikel(response.data.parag_10_artikel);
-        setParag_11_artikel(response.data.parag_11_artikel);
-        setParag_12_artikel(response.data.parag_12_artikel);
-    }
-    
-    const loadImage = (e) => {
-        const image_artikel = e.target.files[0];
-        setFile(image_artikel);
-        setPreview(URL.createObjectURL(image_artikel))
+    const getVideoById = async () => {
+        const response = await axios.get(`https://apisetda.vercel.app/video/${id}`);
+        setLink(response.data.link);
     }
 
-    const updateArtikel = async (e) => {
+    const updateVideo = async (e) => {
         e.preventDefault();
         const formData = new FormData();
-        formData.append("file", file);
-        formData.append("title", title);
-        formData.append("deskrip_img_artikel", deskrip_img_artikel);
-        formData.append("parag_highlight_artikel", parag_highlight_artikel);
-        formData.append("parag_1_artikel", parag_1_artikel);
-        formData.append("parag_2_artikel", parag_2_artikel);
-        formData.append("parag_3_artikel", parag_3_artikel);
-        formData.append("parag_4_artikel", parag_4_artikel);
-        formData.append("parag_5_artikel", parag_5_artikel);
-        formData.append("parag_6_artikel", parag_6_artikel);
-        formData.append("parag_7_artikel", parag_7_artikel);
-        formData.append("parag_8_artikel", parag_8_artikel);
-        formData.append("parag_9_artikel", parag_9_artikel);
-        formData.append("parag_10_artikel", parag_10_artikel);
-        formData.append("parag_11_artikel", parag_11_artikel);
-        formData.append("parag_12_artikel", parag_12_artikel);
-        formData.append("penulis_artikel", penulis_artikel);
-        formData.append("editor_artikel", editor_artikel);
+        formData.append("link", link);
         try {
-            await axios.patch(`http://localhost:5000/artikel/${id}`, formData, {
+            await axios.patch(`https://apisetda.vercel.app/video/${id}`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
             });
-            navigate("/dashboard/artikel")
+            navigate("/dashboard/video")
         } 
         
         catch (error) {
@@ -94,218 +38,50 @@ const EditArtDash = () => {
     };
 
     return (
-        <div className="columns is-centered mt-5">
-      <div className="column is-half">
-        <form onSubmit={updateArtikel}>
+      <>
+      <NavbarDash />
+      <div className="margin_kanankiri">
+      <Row>
+          <Col xl={11} lg={11} md={11} sm={9} xs={9}>
+              <h4 className="judul_content_editor" style={{marginTop: '20px'}}>Edit Video</h4>
+          </Col>
+      </Row>
+      <div className="wadah_garis_editor">
+          <div className="wadah_garis_editor_2"></div>
+      </div>
+        <div className="columns is-centered">
+      <div className="column is-half" style={{marginTop: '25px'}}>
+        <form onSubmit={updateVideo}>
           <div className="field">
-            <label className="label">Product Name</label>
-            <div className="control">
-              <input
-                type="text"
-                className="input"
-                value={deskrip_img_artikel}
-                onChange={(e) => setDeskrip_img_artikel(e.target.value)}
-                placeholder="deskrip_img"
-              />
-            </div>
-            
-            <div className="control">
-                <input
-                    type="text"
-                    className="input"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    placeholder="judul"
-                />
-            </div>
-
-            <div className="control">
-            <input
-                type="text"
-                className="input"
-                value={parag_highlight_artikel}
-                onChange={(e) => setParag_highlight_artikel(e.target.value)}
-                placeholder="parag_highlight"
-              />    
-            </div>
-
-            <div className="control">
-            <input
-                type="text"
-                className="input"
-                value={parag_1_artikel}
-                onChange={(e) => setParag_1_artikel(e.target.value)}
-                placeholder="parag_1"
-              />    
-            </div>
-
-            <div className="control">
-            <input
-                type="text"
-                className="input"
-                value={parag_2_artikel}
-                onChange={(e) => setParag_2_artikel(e.target.value)}
-                placeholder="parag_2"
-              />    
-            </div>
-
-            <div className="control">
-            <input
-                type="text"
-                className="input"
-                value={parag_3_artikel}
-                onChange={(e) => setParag_3_artikel(e.target.value)}
-                placeholder="parag_3"
-              />    
-            </div>
-
-            <div className="control">
-            <input
-                type="text"
-                className="input"
-                value={parag_4_artikel}
-                onChange={(e) => setParag_4_artikel(e.target.value)}
-                placeholder="parag_4"
-              />    
-            </div>
-
-            <div className="control">
-            <input
-                type="text"
-                className="input"
-                value={parag_5_artikel}
-                onChange={(e) => setParag_5_artikel(e.target.value)}
-                placeholder="parag_5"
-              />    
-            </div>
-
-            <div className="control">
-            <input
-                type="text"
-                className="input"
-                value={parag_6_artikel}
-                onChange={(e) => setParag_6_artikel(e.target.value)}
-                placeholder="parag_6"
-              />    
-            </div>
-
-            <div className="control">
-            <input
-                type="text"
-                className="input"
-                value={parag_7_artikel}
-                onChange={(e) => setParag_7_artikel(e.target.value)}
-                placeholder="parag_7"
-              />    
-            </div>
-
-            <div className="control">
-            <input
-                type="text"
-                className="input"
-                value={parag_8_artikel}
-                onChange={(e) => setParag_8_artikel(e.target.value)}
-                placeholder="parag_8"
-              />    
-            </div>
-
-            <div className="control">
-            <input
-                type="text"
-                className="input"
-                value={parag_9_artikel}
-                onChange={(e) => setParag_9_artikel(e.target.value)}
-                placeholder="parag_9"
-              />    
-            </div>
-
-            <div className="control">
-            <input
-                type="text"
-                className="input"
-                value={parag_10_artikel}
-                onChange={(e) => setParag_10_artikel(e.target.value)}
-                placeholder="parag_10"
-              />    
-            </div>
-
-            <div className="control">
-            <input
-                type="text"
-                className="input"
-                value={parag_11_artikel}
-                onChange={(e) => setParag_11_artikel(e.target.value)}
-                placeholder="parag_11"
-              />    
-            </div>
-
-            <div className="control">
-            <input
-                type="text"
-                className="input"
-                value={parag_12_artikel}
-                onChange={(e) => setParag_12_artikel(e.target.value)}
-                placeholder="parag_12"
-              />    
-            </div>
-
-            <div className="control">
-            <input
-                type="text"
-                className="input"
-                value={penulis_artikel}
-                onChange={(e) => setPenulis_artikel(e.target.value)}
-                placeholder="penulis"
-              />    
-            </div>
-
-            <div className="control">
-            <input
-                type="text"
-                className="input"
-                value={editor_artikel}
-                onChange={(e) => setEditor_artikel(e.target.value)}
-                placeholder="editor"
-              />    
-            </div>
-          </div>
- 
-          <div className="field">
-            <label className="label">Image</label>
-            <div className="control">
-              <div className="file">
-                <label className="file-label">
+            <label className="styling_name_produk_add">LINK VIDEO</label>
+            <Row>
+              <Col xl={6} lg={6}>
+                <div className="control">
                   <input
-                    type="file"
-                    className="file-input"
-                    onChange={loadImage}
+                    type="text"
+                    className="input_name_produk_add"
+                    value={link}
+                    onChange={(e) => setLink(e.target.value)}
+                    placeholder="masukkan link video"
                   />
-                  <span className="file-cta">
-                    <span className="file-label">Choose a file...</span>
-                  </span>
-                </label>
-              </div>
-            </div>
+                </div>
+              </Col>
+            </Row>
           </div>
- 
-          {preview ? (
-            <figure className="image is-128x128">
-              <img src={preview} alt="Preview Image" />
-            </figure>
-          ) : (
-            ""
-          )}
- 
-          <div className="field">
+            
+          <div className="field" style={{marginTop: '15px', marginBottom: '25px'}}>
             <div className="control">
-              <button type="submit" className="button is-success">
-                Update
+              <button type="submit" className="button_send_simpan">
+                UPDATE
               </button>
             </div>
           </div>
         </form>
       </div>
     </div>
+    </div>
+    <Footer />
+    </>
     );
 
 };

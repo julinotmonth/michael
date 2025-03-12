@@ -14,20 +14,6 @@ import { formatDistanceToNow } from "date-fns";  // Import fungsi dari date-fns
 import { id } from 'date-fns/locale';
 
 function ComponentBerita () {
-    const terkini_1 ="Politik kemarin, calon tunggal pilkada hingga putusan gabung BRICS"
-    const terkini_2 ="KPU catat 41 daerah dengan calon tunggal pada Pilkada 2024 dengan hasil yang valid"
-    const terkini_3 ="Rudiantara: Penilaian Anugerah Pandu Negeri 2024 dilakukan independen"
-    const terkini_4 ="Menlu sampaikan terima kasih ke Komisi I DPR di akhir masa jabatannya"
-    const terkini_5 ="Hukum kemarin, Pertukaran buron hingga tanggapan KPK terkait Kaesang"
-    const terkini_6 ="Imigrasi deportasi buronan Filipina berinisial AG"
-    const terkini_7 ="Menlu sampaikan terima kasih ke Komisi I DPR di akhir masa jabatannya"
-    const terkini_8 ="Imigrasi deportasi buronan Filipina berinisial AG"
-
-    const disukai_1 = "Kecelakaan beruntun libatkan sejumlah kendaraan di Jakarta Utara"
-    const disukai_2 = "Kemenkumham akan limpahkan kewenangan Rupbasan ke Kejagung"
-    const disukai_3 = "Ribuan kades Jatim nyatakan satu komando tak berpolitik jelang Pilkada"
-    const disukai_4 = "Partai Perubahan besutan Anies Baswedan buka pendaftaran, benarkah?"
-    const disukai_5 = "Jadwal lengkap Arab Saudi vs Indonesia di Kualifikasi Piala Dunia 2026"
 
     // Fungsi untuk memotong teks jika melebihi 10 karakter
     const truncateText = (text, maxLength) => {
@@ -44,7 +30,7 @@ function ComponentBerita () {
     }, []);
 
     const getProducts = async () => {
-        const response = await axios.get("http://localhost:5000/products");
+        const response = await axios.get("https://apisetda.vercel.app/products");
         setProducts(response.data)
     };
     return (

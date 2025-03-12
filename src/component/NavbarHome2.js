@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import img_setda from "../img/img_setda.png"
 import { IoSearch } from "react-icons/io5";
+import pasuruan from "../img/pasuruan.png"
 
 
 function NavbarHome2 () {
@@ -66,11 +67,11 @@ function NavbarHome2 () {
                     <Row>
                         <Col xl={3} lg={2} md={3} sm={6} xs={6}>
                             <Link>
-                                <img src={img_setda} className="content_img_logo" />
+                                <img src={pasuruan} className="content_img_logo" />
                             </Link>
                         </Col>
                         <Col xl={9} lg={10} md={9} sm={6} xs={6}>
-                            <div className={`wadah_icon_close_navbar ${isNavbarVisible ? 'wadah_icon_close_navbar_close' : ''}`}>
+                            <div style={{textAlign: 'right'}} className={`wadah_icon_close_navbar ${isNavbarVisible ? 'wadah_icon_close_navbar_close' : ''}`}>
                                 <div className="wadah_icon_close_navbar_2">
                                     <div className="wadah_icon_close_navbar_3" onClick={closeNavbar}>
                                         <IoMdClose className="icon_close_navbar" />
@@ -79,36 +80,20 @@ function NavbarHome2 () {
                                 <div className="wadah_link_navbar_2">
                                     <input type="search" onChange={handleSearch} value={searchTerm} onKeyDown={handleKeyPress} placeholder="Search" className="content_search" />
                                     <Link to="/" className="content_link_navbar_2">BERANDA</Link>
-                                    <Link to="/laporan-kinerja"  className="content_link_navbar_2">LAPORAN KINERJA</Link>
-                                    <Link to="https://biroadpim.jatimprov.go.id/ppid/" className="content_link_navbar_2">PPID</Link>
                                     <NavDropdown
                                     id="nav-dropdown-dark-example"
                                     title="PROFIL"
                                     className="wadah_dropdown content_link_navbar_2"
                                     >
                                     <NavDropdown.Item className="link_dropdown_navbar_2" href="/visi-misi">Visi & Misi</NavDropdown.Item>
-                                    <NavDropdown.Item className="link_dropdown_navbar_2" href="tugas&fungsi">Tugas & Fungsi</NavDropdown.Item>
                                     <NavDropdown.Item className="link_dropdown_navbar_2" href="/struktur-organisasi">Struktur Organisasi</NavDropdown.Item>
-                                    <NavDropdown.Item className="link_dropdown_navbar_2" href="/profil-kepala-biro">Profil Kepala Biro</NavDropdown.Item>
+                                    <NavDropdown.Item 
+                                    className="link_dropdown_navbar_2" 
+                                    href="/profil-kepala-desa"
+                                    >Profil Kepala Desa</NavDropdown.Item>
                                     </NavDropdown>
-                                    <NavDropdown
-                                    id="nav-dropdown-dark-example"
-                                    title="INFORMASI"
-                                    className="wadah_dropdown content_link_navbar_2"
-                                    >
-                                    <NavDropdown.Item className="link_dropdown_navbar_2" href="/whistle-blowing">Whistle Blowing</NavDropdown.Item>
-                                    <NavDropdown.Item className="link_dropdown_navbar_2" href="/artikel">Artikel</NavDropdown.Item>
-                                    <NavDropdown.Item className="link_dropdown_navbar_2" href="/berita">Berita</NavDropdown.Item>
-                                    <NavDropdown.Item className="link_dropdown_navbar_2" href="/pengumuman">Pengumuman</NavDropdown.Item>
-                                    </NavDropdown>
-                                    <NavDropdown
-                                    id="nav-dropdown-dark-example"
-                                    title="PUBLIKASI"
-                                    className="wadah_dropdown content_link_navbar_2"
-                                    >
-                                    <NavDropdown.Item className="link_dropdown_navbar_2" href="/download">Download</NavDropdown.Item>
-                                    <NavDropdown.Item className="link_dropdown_navbar_2" href="/video">Video</NavDropdown.Item>
-                                    </NavDropdown>
+                                    <Link to="/berita" className="content_link_navbar_2">BERITA</Link>
+                                    <Link to="/video" className="content_link_navbar_2">VIDEO</Link>
                                     <Link to="/hubungi-kami" className="content_link_navbar_2">HUBUNGI KAMI</Link>
                                     <Link onClick={toggleSearch} className="content_link_navbar_2 display_none_content_search"><IoIosSearch className="content_search_navbar_2" /></Link>
                                 </div>

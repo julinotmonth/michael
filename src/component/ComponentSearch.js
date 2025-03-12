@@ -39,9 +39,9 @@ function ComponentSearch () {
           try {
             setLoading(true);
             const [articlesRes, pengumumanRes, productsRes] = await Promise.all([
-              axios.get('http://localhost:5000/artikel'),    // API untuk artikel
-              axios.get('http://localhost:5000/pengumuman'), // API untuk pengumuman
-              axios.get('http://localhost:5000/products')    // API untuk produk
+              axios.get('https://apisetda.vercel.app/artikel'),    // API untuk artikel
+              axios.get('https://apisetda.vercel.app/pengumuman'), // API untuk pengumuman
+              axios.get('https://apisetda.vercel.app/products')    // API untuk produk
             ]);
           setArticles(articlesRes.data); // Menyimpan data artikel
           setPengumuman(pengumumanRes.data); // Menyimpan data pengumuman

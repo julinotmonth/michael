@@ -1,5 +1,6 @@
 import { Col, Row } from "react-bootstrap";
 import foto_kepala_biro from "../img/foto_kepala_biro.jpg"
+import kepala_desa from "../img/kepala_desa.png"
 
 function ContentVisiMisi () {
     return (
@@ -9,7 +10,7 @@ function ContentVisiMisi () {
                     <Row>
                         <Col xl={4} lg={4} md={4} sm={12}>
                             <div className="wadah_content_visi_misi_2 border_bottom_visi">
-                                <img src={foto_kepala_biro} className="content_img_visi_misi" />
+                                <img src={kepala_desa} className="content_img_visi_misi" />
                             </div>
                         </Col>
                         <Col xl={8} lg={8} md={8} sm={12}>
@@ -21,22 +22,29 @@ function ContentVisiMisi () {
 
                                 <div className="wadah_visi border_bottom_visimisi margin_top_visimisi">
                                     <span className="span_judul_visi">Visi</span>
-                                    <p className="deskripsi_visi">Terwujudnya masyarakat Jawa Timur yang sejahtera, seimbang, unggul dan berakhlak dengan tata kelola pemerintahan partisipatoris, inklusif dan menghargai nilai-nilai manusia.'</p>
+                                    <p className="deskripsi_visi">MENUJU DESA SUMBERPITU YANG RELEGIUS,
+SEJAHTERAH, BERKEADILAN, MASYARAKAT
+CERDAS, BERKUALITAS MENUJU KEMAKMURAN
+MASYARAKAT YANG ADIL DAN MERATA</p>
                                 </div>
 
                                 <div className="wadah_visi border_bottom_visimisi margin_top_visimisi">
                                     <span className="span_judul_visi">Misi</span>
-                                    <p className="deskripsi_visi">Tata Kelola Pemerintahan yang Bersih, Inovatif, Terbuka, Partisipatoris Memperkuat Demokrasi Kewargaan untuk Menghadirkan Ruang Sosial yang menghargai prinsip Kebhinekaan.</p>
+                                    <p className="deskripsi_visi">Mewujudkan pemerataan pembangunan dan hasil-hasilnya
+yang dapat dirasakan oleh masyarakat desa tanpa
+memandang kepentingan politik, sara antar golongan</p>
                                 </div>
 
                                 <div className="wadah_visi border_bottom_visimisi margin_top_visimisi">
                                     <span className="span_judul_visi">Tujuan</span>
-                                    <p className="deskripsi_visi">Meningkatkan Pelayanan Keprotokolan, Komunikasi Pimpinan, Perencanaan Setda dan Kepegawaian Setda.</p>
+                                    <p className="deskripsi_visi">Memperkuat insfratruktur untuk mendukung
+                                    pengembangan ekonomi dan pelayanan dasar.</p>
                                 </div>
 
                                 <div className="wadah_visi border_bottom_visimisi margin_top_visimisi">
                                     <span className="span_judul_visi">Sasaran</span>
-                                    <p className="deskripsi_visi">Meningkatnya kualitas layanan keprotokolan, ketersediaan dan penyebarluasan informasi, serta perencanaan, pelaporan dana dministrasi kepegawaian setda.</p>
+                                    <p className="deskripsi_visi">Publikasi dan Informasi Kepada Masyarakat, Meningkatkan Kapasitas Tenaga Keamanan dan Ketertiban
+                                    Umum, Kesiapsiagaan Menghadapi Keadaan Mendesak/ Darurat, Memperlancar Transportasi Masyarakat</p>
                                 </div>
                             </div>
                         </Col>

@@ -11,7 +11,7 @@ import { IoSearch } from "react-icons/io5";
 import { FaUser } from "react-icons/fa6";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
-
+import pasuruan from "../img/pasuruan.png"
 
 function NavbarDash () {
     const [isNavbarVisible, setIsNavbarVisible] = useState(false);
@@ -128,7 +128,7 @@ function NavbarDash () {
                     <Row>
                         <Col xl={3} lg={2} md={3} sm={6} xs={6}>
                             <Link>
-                                <img src={img_setda} className="content_img_logo" />
+                                <img src={pasuruan} className="content_img_logo" />
                             </Link>
                         </Col>
                         <Col xl={9} lg={10} md={9} sm={6} xs={6}>
@@ -146,8 +146,7 @@ function NavbarDash () {
                                     </Link>
                                     <Link to="/dashboard" className="content_link_navbar_2">DASHBOARD</Link>
                                     <Link to="/dashboard/berita"  className="content_link_navbar_2">BERITA</Link>
-                                    <Link to="/dashboard/artikel" className="content_link_navbar_2">ARTIKEL</Link>
-                                    <Link to="/dashboard/pengumuman" className="content_link_navbar_2">PENGUMUMAN</Link>
+                                    <Link to="/dashboard/video" className="content_link_navbar_2">VIDEO</Link>
                                     <Link to="#" className="content_link_navbar_2 margin_left_user display_none_search">
                                         <FaUser className="icon_user_dashboard" />
                                     </Link>

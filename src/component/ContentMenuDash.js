@@ -10,7 +10,7 @@ function ContentMenuDash () {
             <div className="margin_kanankiri">
                 <div className="content_menu_dash">
                     <Row>
-                            <Col xl={4} lg={4}>
+                            <Col xl={6} lg={6}>
                                 <div className="content_menu_dash_2">
                                     <Card>
                                     <Card.Img variant="top" src={news} />
@@ -27,33 +27,16 @@ function ContentMenuDash () {
                                 </div>
                             </Col>  
 
-                            <Col xl={4} lg={4}>
+                            <Col xl={6} lg={6}>
                                 <div className="content_menu_dash_2">
                                     <Card>
                                     <Card.Img variant="top" src={artikel} />
                                     <Card.Body>
-                                        <Card.Title className="fontsizebold">Artikel</Card.Title>
+                                        <Card.Title className="fontsizebold">Video</Card.Title>
                                         <Card.Text>
-                                            Masuk jika ingin melihat menambahkan atau menghapus Artikel
+                                            Masuk jika ingin melihat menambahkan atau menghapus Video
                                         </Card.Text>
-                                        <Link to="artikel">
-                                            <Button variant="primary">Masuk</Button>
-                                        </Link>
-                                    </Card.Body>
-                                    </Card>
-                                </div>
-                            </Col>
-
-                            <Col xl={4} lg={4}>
-                                <div className="content_menu_dash_2">
-                                    <Card>
-                                    <Card.Img variant="top" src={news} />
-                                    <Card.Body>
-                                        <Card.Title className="fontsizebold">Pengumuman</Card.Title>
-                                        <Card.Text>
-                                            Masuk jika ingin melihat menambahkan atau menghapus Artikel
-                                        </Card.Text>
-                                        <Link to="pengumuman">
+                                        <Link to="video">
                                             <Button variant="primary">Masuk</Button>
                                         </Link>
                                     </Card.Body>

@@ -28,8 +28,6 @@ function NavbarHome () {
                             <div className='wadah_content_navbar_1'>
                                 <Link to="/login" className='link_content_navbar_1 margin_right_content_navbar_1'>Login</Link>
                                 <Link to="/berita" className='link_content_navbar_1 margin_right_content_navbar_1'>Berita</Link>
-                                <Link to="/artikel" className='link_content_navbar_1 margin_right_content_navbar_1'>Artikel</Link>
-                                <Link to="/pengumuman" className='link_content_navbar_1 margin_right_content_navbar_1'>Pengumuman</Link>
                                 <Link to="/video" className='link_content_navbar_1'>Video</Link>
                             </div>
                         </Col>

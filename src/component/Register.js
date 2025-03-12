@@ -37,12 +37,11 @@ const Register = () => {
                 <LoginLogo />
             </Logo>
             <Input />
-            <Username visible={true} />
-            <Username placeholder='tes' value={email} onChange={(e) => setEmail(e.target.value)} />
-            <Password value={password} visible={true} onChange={(e) => setPassword(e.target.value)} />
-            <Footer>
-                Not a member? <a href="#">Sign up now</a>
-            </Footer>
+            <Input />
+            <Username />
+            <Username placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
+            <Username placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
+            <Password value={password} visible={true} onChange={(e) => setPassword(e.target.value)} />  
         </LoginPage>
   </form>  
     )
